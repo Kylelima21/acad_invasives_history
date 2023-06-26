@@ -87,7 +87,7 @@ herbs <- T1 %>%
 plot_grid(species, sites, hours, herbs, nrow = 2, labels = c('a)', 'b)', 'c)', 'd)'), align = "h", label_size = 16)
 
 ## Save
-ggsave(paste0("outputs/four_panel_figure_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/four_panel_figure_", str_replace_all(today(), "-", ""), ".pdf"),
        height = 6, width = 9, units = "in", dpi = 700)
 
 
@@ -108,7 +108,7 @@ T1 %>%
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm")))
 
 ## Save
-ggsave(paste0("outputs/avg_hours_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/avg_hours_", str_replace_all(today(), "-", ""), ".pdf"),
        height = 4, width = 6, units = "in", dpi = 700)
 
 
@@ -128,7 +128,7 @@ T1 %>%
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm")))
 
 ## Save
-ggsave(paste0("outputs/avg_herbicide_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/avg_herbicide_", str_replace_all(today(), "-", ""), ".pdf"),
        height = 4, width = 6, units = "in", dpi = 700)
 
 
@@ -147,7 +147,7 @@ T1 %>%
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm")))
 
 ## Save
-ggsave(paste0("outputs/species_year_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/species_year_", str_replace_all(today(), "-", ""), ".pdf"),
        height = 4, width = 6, units = "in", dpi = 700)
 
 
@@ -165,7 +165,7 @@ T1 %>%
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm")))
 
 ## Save
-ggsave(paste0("outputs/annual_herbicide_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/annual_herbicide_", str_replace_all(today(), "-", ""), ".pdf"),
        height = 4, width = 6, units = "in", dpi = 700)
 
 
@@ -187,7 +187,7 @@ S1 %>%
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm"))) 
 
 ## Save
-ggsave(paste0("outputs/species_hours_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/species_hours_", str_replace_all(today(), "-", ""), ".pdf"),
               height = 4, width = 6, units = "in", dpi = 700)
 
 
@@ -209,7 +209,7 @@ S1 %>%
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm"))) 
 
 ## Save
-ggsave(paste0("outputs/species_herbicide_", str_replace_all(today(), "-", ""), ".png"),
+ggsave(paste0("outputs/species_herbicide_", str_replace_all(today(), "-", ""), ".pdf"),
        height = 4, width = 6, units = "in", dpi = 700)
 
 
