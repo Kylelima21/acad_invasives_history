@@ -88,7 +88,7 @@ plot_grid(species, sites, hours, herbs, nrow = 2, labels = c('a)', 'b)', 'c)', '
 
 ## Save
 ggsave(paste0("outputs/four_panel_figure_", str_replace_all(today(), "-", ""), ".png"),
-       height = 6, width = 9, units = "in", dpi = 350)
+       height = 6, width = 9, units = "in", dpi = 700)
 
 
 
@@ -109,7 +109,7 @@ T1 %>%
 
 ## Save
 ggsave(paste0("outputs/avg_hours_", str_replace_all(today(), "-", ""), ".png"),
-       height = 4, width = 6, units = "in", dpi = 350)
+       height = 4, width = 6, units = "in", dpi = 700)
 
 
 
@@ -129,7 +129,7 @@ T1 %>%
 
 ## Save
 ggsave(paste0("outputs/avg_herbicide_", str_replace_all(today(), "-", ""), ".png"),
-       height = 4, width = 6, units = "in", dpi = 350)
+       height = 4, width = 6, units = "in", dpi = 700)
 
 
 
@@ -148,7 +148,7 @@ T1 %>%
 
 ## Save
 ggsave(paste0("outputs/species_year_", str_replace_all(today(), "-", ""), ".png"),
-       height = 4, width = 6, units = "in", dpi = 350)
+       height = 4, width = 6, units = "in", dpi = 700)
 
 
 
@@ -166,7 +166,7 @@ T1 %>%
 
 ## Save
 ggsave(paste0("outputs/annual_herbicide_", str_replace_all(today(), "-", ""), ".png"),
-       height = 4, width = 6, units = "in", dpi = 350)
+       height = 4, width = 6, units = "in", dpi = 700)
 
 
 
@@ -188,7 +188,7 @@ S1 %>%
 
 ## Save
 ggsave(paste0("outputs/species_hours_", str_replace_all(today(), "-", ""), ".png"),
-              height = 4, width = 6, units = "in", dpi = 350)
+              height = 4, width = 6, units = "in", dpi = 700)
 
 
 
@@ -210,7 +210,7 @@ S1 %>%
 
 ## Save
 ggsave(paste0("outputs/species_herbicide_", str_replace_all(today(), "-", ""), ".png"),
-       height = 4, width = 6, units = "in", dpi = 350)
+       height = 4, width = 6, units = "in", dpi = 700)
 
 
 
