@@ -7,8 +7,12 @@
 #------------------------------------------------#
 
 library(tidyverse)
+library(sf)
+library(rgdal)
+library(leaflet)
 library(ggplot2)
 library(cowplot)
+
 
 
 
@@ -23,6 +27,64 @@ S1 <- tibble(read.csv('data/SpeciesData22ecl.csv', header=TRUE)) %>%
                          "CIRSPP", "FALJAP", "FRAALN",
                          "HERMAN", "LONSPP", "LYTSAL"))
 
+
+
+
+#------------------------------------------------#
+####            Plotting/Figures              ####
+#------------------------------------------------#
+
+### Ended up creating a QGIS map instead
+## Read in state polygons and format for plotting
+lyr <- ogrListLayers("data/st_us.kml")
+mykml <- lapply(lyr, function(i) readOGR("data/st_us.kml", i))
+names(mykml) <- lyr
+
+
+## Read in park points
+parks <- st_read("data/Analysis_Parks_39/Analysis_Parks_39.shp") 
+
+
+## Plot Maine map with Leaflet
+me_map <- leaflet::leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
+  leaflet::addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                    options = providerTileOptions(maxZoom = 9)) %>% 
+  leaflet::addPolygons(data = mykml$MAINE, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`NEW HAMPSHIRE`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$VERMONT, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$MASSACHUSETTS, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`NEW YORK`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`PENNSYLVANIA`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`NEW JERSEY`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`MARYLAND`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`WEST VIRGINIA`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`OHIO`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`VIRGINIA`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`MICHIGAN`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`KENTUCKY`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`NORTH CAROLINA`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addPolygons(data = mykml$`TENNESSEE`, weight = 0.5, opacity = 1, color = "white", 
+                       fillOpacity = 0) %>% 
+  leaflet::addCircleMarkers(data = parks, radius = 4, weight = 1, opacity = 1, color = "black",
+                            fillColor = "orange", fillOpacity = 100)
+
+
+## View map
+me_map
 
 
 #------------------------------------------------#
