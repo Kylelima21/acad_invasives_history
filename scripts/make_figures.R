@@ -87,6 +87,13 @@ me_map <- leaflet::leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
 me_map
 
 
+leaflet::leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
+  leaflet::addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                    options = providerTileOptions(maxZoom = 9)) %>% 
+  leaflet::addProviderTiles(providers$Stadia.StamenTonerLines)
+
+
+
 #------------------------------------------------#
 ####            Plotting/Figures              ####
 #------------------------------------------------#
