@@ -22,10 +22,12 @@ library(cowplot)
 
 T1 <- tibble(read.csv('data/SummaryData22.csv', header = TRUE))
 
-S1 <- tibble(read.csv('data/SpeciesData22ecl.csv', header=TRUE)) %>% 
+S1 <- tibble(read.csv('data/SpeciesData22ecl.csv', header = TRUE)) %>% 
   filter(Species %in%  c("ALLPET", "BERTHU", "CELORB",
                          "CIRSPP", "FALJAP", "FRAALN",
-                         "HERMAN", "LONSPP", "LYTSAL"))
+                         "HERMAN", "LONSPP", "LYTSAL")) %>% 
+  mutate(ScientificName = ifelse(ScientificName == "Heracleum mantegazz.", 
+                                 "Heracleum mantegazzianum", ScientificName))
 
 
 
@@ -156,7 +158,7 @@ herbs <- T1 %>%
 plot_grid(species, sites, hours, herbs, nrow = 2, labels = c('a)', 'b)', 'c)', 'd)'), align = "h", label_size = 16)
 
 ## Save
-ggsave(paste0("outputs/four_panel_figure_", str_replace_all(today(), "-", ""), ".pdf"),
+ggsave(paste0("outputs/forpub/four_panel_figure_", str_replace_all(today(), "-", ""), ".png"),
        height = 6, width = 9, units = "in", dpi = 700)
 
 
@@ -250,13 +252,14 @@ S1 %>%
   facet_wrap(~ScientificName, ncol = 3) + #, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank(),
+        strip.text = element_text(face = "italic"),
         axis.text = element_text(color = "black", size = "8"),
         axis.title = element_text(color = "black", size = "10"),
         axis.title.x = element_text(margin = margin(0.5, 0, 0, 0, "cm")),
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm"))) 
 
 ## Save
-ggsave(paste0("outputs/species_hours_", str_replace_all(today(), "-", ""), ".pdf"),
+ggsave(paste0("outputs/forpub/species_hours_", str_replace_all(today(), "-", ""), ".png"),
               height = 4, width = 6, units = "in", dpi = 700)
 
 
@@ -272,13 +275,14 @@ S1 %>%
   facet_wrap(~ScientificName, ncol = 3) + #, scales = "free_y")+
   theme_bw() +
   theme(panel.grid = element_blank(),
+        strip.text = element_text(face = "italic"),
         axis.text = element_text(color = "black", size = "8"),
         axis.title = element_text(color = "black", size = "10"),
         axis.title.x = element_text(margin = margin(0.5, 0, 0, 0, "cm")),
         axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm"))) 
 
 ## Save
-ggsave(paste0("outputs/species_herbicide_", str_replace_all(today(), "-", ""), ".pdf"),
+ggsave(paste0("outputs/forpub/species_herbicide_", str_replace_all(today(), "-", ""), ".png"),
        height = 4, width = 6, units = "in", dpi = 700)
 
 
